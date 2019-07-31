@@ -1,0 +1,17 @@
+Building
+To build the project use following command:
+.
+
+
+Running
+After building the application run following command to start it:
+
+e.g. `java -jar target/homework-app.jar -Ddatasource=misc/books.json`
+
+
+Access
+Endpoints available at the url:
+
+- Book by ISBN url: /api/book/{isbn}
+- Book by category url: /api/category/{categoryName}/books
+- Author rating url: /api/rating
