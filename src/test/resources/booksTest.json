@@ -6,7 +6,8 @@
       "volumeInfo": {
         "title": "The Religion of Java",
         "authors": [
-          "Clifford Geertz"
+          "Clifford Geertz",
+          "Mad Bad"
         ],
         "publisher": "University of Chicago Press",
         "publishedDate": "1976-02-15",
@@ -31,7 +32,8 @@
           "smallThumbnail": "http://books.google.com/books/content?id=-SYM4PW-YAgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
           "thumbnail": "http://books.google.com/books/content?id=-SYM4PW-YAgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
         },
-        "language": "en"
+        "language": "en",
+        "previewLink": "http://books.google.pl/books?id=-SYM4PW-YAgC&printsec=frontcover&dq=java&hl=&cd=2&source=gbs_api"
       }
     }
   ]

@@ -1,10 +1,10 @@
 package pl.mazurekit.cognifide;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
-import java.io.FileReader;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,15 +21,12 @@ public class JSONBookListProvider implements BookListProvider {
     @Override
     public List<Book> getAvailableBooks() {
         List<Book> booksList = new ArrayList<>();
-        JSONParser parser = new JSONParser();
+        ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(filePath));
 
-            for (JSONObject x : getJsonObjectsList(jsonObject)) {
-                x.toString();
-            }
 
+            booksList.toString();
         } catch (Exception e) {
             //TODO make it good
             e.printStackTrace();

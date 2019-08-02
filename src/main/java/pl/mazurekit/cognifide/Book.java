@@ -3,6 +3,7 @@ package pl.mazurekit.cognifide;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -20,6 +21,7 @@ public class Book {
     private String language;
     private String previewLink;
     private Double averageRating;
+
     //need to count average rating of authors
     private Integer ratingsCount;
     private String[] authors;
@@ -49,11 +51,20 @@ public class Book {
         this.averageRating = (Double) volumeInfo.get("averageRating");
         this.ratingsCount = (Integer) volumeInfo.get("ratingsCount");
 
+        List<String> authors = (List<String>) volumeInfo.get("authors");
+        this.authors = convertListToArray(authors);
 
+        List<String> categories = (List<String>) volumeInfo.get("categories");
+        this.categories = convertListToArray(categories);
 
-//        this.authors = (String[]) volumeInfo.get("authors");
-//        this.categories = (String[]) volumeInfo.get("categories");
-//
+    }
+
+    private String[] convertListToArray(List<String> list) {
+        String[] listStrings = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            listStrings[i] = String.valueOf(list.get(i));
+        }
+        return listStrings;
 
     }
 
