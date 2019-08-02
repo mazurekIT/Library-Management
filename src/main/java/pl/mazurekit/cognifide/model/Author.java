@@ -1,8 +1,13 @@
-package pl.mazurekit.cognifide;
+package pl.mazurekit.cognifide.model;
 
 public class Author {
     private String fullName;
     private Double averageRating;
+
+
+
+
+
 
     public Author(String fullName, Double averageRating) {
         this.fullName = fullName;
