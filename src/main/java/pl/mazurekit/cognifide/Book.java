@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Book {
     private String isbn;
+    private String id;
     private String title;
     private String subtitle;
     private String publisher;
