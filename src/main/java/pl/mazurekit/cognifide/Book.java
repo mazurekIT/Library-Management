@@ -1,10 +1,15 @@
 package pl.mazurekit.cognifide;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Map;
+
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
-    private String isbn;
     private String id;
+    private String isbn;
     private String title;
     private String subtitle;
     private String publisher;
@@ -15,13 +20,47 @@ public class Book {
     private String language;
     private String previewLink;
     private Double averageRating;
-    private List<String> authors;
-    private List<String> categories;
+    //need to count average rating of authors
+    private Integer ratingsCount;
+    private String[] authors;
+    private String[] categories;
 
 
-    //TODO constructor/s
+    @SuppressWarnings("unchecked")
+    @JsonProperty("volumeInfo")
+    private void unpackNested(Map<String, Object> volumeInfo) {
+        this.isbn = "do zrobienia";//TODO
+
+        this.title = (String) volumeInfo.get("title");
+        this.subtitle = (String) volumeInfo.get("subtitle");
+        this.publisher = (String) volumeInfo.get("publisher");
+
+//        //TODO zmiana na UNIX timestamp
+//        this.publishedDate=(Long) volumeInfo.get("publishedDate");
+
+        this.description = (String) volumeInfo.get("description");
+        this.pageCount = (Integer) volumeInfo.get("pageCount");
+
+        Map<String, String> imageLinks = (Map<String, String>) volumeInfo.get("imageLinks");
+        this.thumbnailUrl = imageLinks.get("thumbnail");
+
+        this.language = (String) volumeInfo.get("language");
+        this.previewLink = (String) volumeInfo.get("previewLink");
+        this.averageRating = (Double) volumeInfo.get("averageRating");
+        this.ratingsCount = (Integer) volumeInfo.get("ratingsCount");
 
 
+
+//        this.authors = (String[]) volumeInfo.get("authors");
+//        this.categories = (String[]) volumeInfo.get("categories");
+//
+
+    }
+
+
+    public String getId() {
+        return id;
+    }
 
     public String getIsbn() {
         return isbn;
@@ -67,11 +106,15 @@ public class Book {
         return averageRating;
     }
 
-    public List<String> getAuthors() {
+    public Integer getRatingsCount() {
+        return ratingsCount;
+    }
+
+    public String[] getAuthors() {
         return authors;
     }
 
-    public List<String> getCategories() {
+    public String[] getCategories() {
         return categories;
     }
 }
