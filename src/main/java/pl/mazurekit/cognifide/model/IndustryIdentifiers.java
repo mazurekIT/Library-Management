@@ -1,13 +1,20 @@
 package pl.mazurekit.cognifide.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class IndustryIdentifiers {
 
 private String type;
 private String identifier;
 
+    public IndustryIdentifiers() {
+    }
 
-
-
+    public IndustryIdentifiers(String type, String identifier) {
+        this.type = type;
+        this.identifier = identifier;
+    }
 
     public String getType() {
         return type;

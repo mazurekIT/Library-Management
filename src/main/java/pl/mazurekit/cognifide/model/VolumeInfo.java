@@ -1,7 +1,12 @@
 package pl.mazurekit.cognifide.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class VolumeInfo {
-    private IndustryIdentifiers[] industryIdentifiers;
+    private List<IndustryIdentifiers> industryIdentifiers;
     private String title;
     private String subtitle;
     private String publisher;
@@ -12,20 +17,37 @@ public class VolumeInfo {
     private String language;
     private String previewLink;
     private Double averageRating;
+
     //it will be need to count average rating of authors
-    private Integer ratingCount;
+    private Integer ratingsCount;
     private String[] authors;
     private String[] categories;
 
+    public VolumeInfo() {
+    }
 
+    public VolumeInfo(List<IndustryIdentifiers> industryIdentifiers, String title, String subtitle, String publisher, Long publishedDate, String description, Integer pageCount, ImageLinks imageLinks, String language, String previewLink, Double averageRating, Integer ratingsCount, String[] authors, String[] categories) {
+        this.industryIdentifiers = industryIdentifiers;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.publisher = publisher;
+        this.publishedDate = publishedDate;
+        this.description = description;
+        this.pageCount = pageCount;
+        this.imageLinks = imageLinks;
+        this.language = language;
+        this.previewLink = previewLink;
+        this.averageRating = averageRating;
+        this.ratingsCount = ratingsCount;
+        this.authors = authors;
+        this.categories = categories;
+    }
 
-
-
-    public IndustryIdentifiers[] getIndustryIdentifiers() {
+    public List<IndustryIdentifiers> getIndustryIdentifiers() {
         return industryIdentifiers;
     }
 
-    public void setIndustryIdentifiers(IndustryIdentifiers[] industryIdentifiers) {
+    public void setIndustryIdentifiers(List<IndustryIdentifiers> industryIdentifiers) {
         this.industryIdentifiers = industryIdentifiers;
     }
 
@@ -109,12 +131,12 @@ public class VolumeInfo {
         this.averageRating = averageRating;
     }
 
-    public Integer getRatingCount() {
-        return ratingCount;
+    public Integer getRatingsCount() {
+        return ratingsCount;
     }
 
-    public void setRatingCount(Integer ratingCount) {
-        this.ratingCount = ratingCount;
+    public void setRatingsCount(Integer ratingsCount) {
+        this.ratingsCount = ratingsCount;
     }
 
     public String[] getAuthors() {
