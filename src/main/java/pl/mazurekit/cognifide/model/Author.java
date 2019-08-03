@@ -1,4 +1,4 @@
-package pl.mazurekit.cognifide;
+package pl.mazurekit.cognifide.model;
 
 public class Author {
     private String fullName;

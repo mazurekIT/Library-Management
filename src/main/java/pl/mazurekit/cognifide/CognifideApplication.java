@@ -2,6 +2,9 @@ package pl.mazurekit.cognifide;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import pl.mazurekit.cognifide.model.Book;
+
+import java.util.List;
 
 @SpringBootApplication
 public class CognifideApplication {
@@ -11,7 +14,7 @@ public class CognifideApplication {
 
         BookListProvider bookListProvider = new JSONBookListProvider("C:\\Users\\Mazzi\\Desktop\\cognifide\\src\\main\\resources\\books.json");
 
-        bookListProvider.getAvailableBooks();
+        List<Book> availableBooks = bookListProvider.getAvailableBooks();
     }
 
 }

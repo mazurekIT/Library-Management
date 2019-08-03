@@ -1,8 +1,10 @@
-package pl.mazurekit.cognifide;
+package pl.mazurekit.cognifide.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import pl.mazurekit.cognifide.DateConverter;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +33,10 @@ public class Book {
     @SuppressWarnings("unchecked")
     @JsonProperty("volumeInfo")
     private void unpackNested(Map<String, Object> volumeInfo) {
-        this.isbn = "do zrobienia";//TODO
+
+        List<LinkedHashMap<String, String>> list = (List<LinkedHashMap<String, String>>) volumeInfo.get("industryIdentifiers");
+        this.isbn = getISBN_13Value(list);
+
 
         this.title = (String) volumeInfo.get("title");
         this.subtitle = (String) volumeInfo.get("subtitle");
@@ -56,7 +61,6 @@ public class Book {
 
         List<String> categories = (List<String>) volumeInfo.get("categories");
         this.categories = convertListToArray(categories);
-
     }
 
 
@@ -67,6 +71,15 @@ public class Book {
         }
         return listStrings;
 
+    }
+
+    private String getISBN_13Value(List<LinkedHashMap<String, String>> list) {
+        for (LinkedHashMap<String, String> x : list) {
+            if ("ISBN_13".equals(x.get("type"))) {
+                return x.get("identifier");
+            }
+        }
+        return null;
     }
 
 

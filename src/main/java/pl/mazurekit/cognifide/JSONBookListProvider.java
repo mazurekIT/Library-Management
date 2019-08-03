@@ -1,10 +1,10 @@
 package pl.mazurekit.cognifide;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import pl.mazurekit.cognifide.model.Book;
 
 import java.io.File;
 import java.util.ArrayList;
