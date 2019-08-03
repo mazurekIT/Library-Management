@@ -1,5 +1,7 @@
 package pl.mazurekit.cognifide;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,13 +22,17 @@ public class JSONBookListProvider implements BookListProvider {
 
     @Override
     public List<Book> getAvailableBooks() {
-        List<Book> booksList = new ArrayList<>();
+
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
+            JsonNode jsonNode = objectMapper.readTree(new File(filePath));
+            String items = jsonNode.get(BOOKS_PROVIDER_KEY).asText();
 
+            //TODO jak to pobrać ???????????????
+//            List<Book> booksList = objectMapper.readValue(items,new TypeReference<List<Book>>(){});
 
-            booksList.toString();
+//            booksList.toString();
         } catch (Exception e) {
             //TODO make it good
             e.printStackTrace();

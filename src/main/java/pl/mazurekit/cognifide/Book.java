@@ -37,8 +37,8 @@ public class Book {
         this.subtitle = (String) volumeInfo.get("subtitle");
         this.publisher = (String) volumeInfo.get("publisher");
 
-//        //TODO zmiana na UNIX timestamp
-//        this.publishedDate=(Long) volumeInfo.get("publishedDate");
+        DateConverter publishedDate = new DateConverter((String) volumeInfo.get("publishedDate"));
+        this.publishedDate = publishedDate.getUnixTimestamp();
 
         this.description = (String) volumeInfo.get("description");
         this.pageCount = (Integer) volumeInfo.get("pageCount");
@@ -58,6 +58,7 @@ public class Book {
         this.categories = convertListToArray(categories);
 
     }
+
 
     private String[] convertListToArray(List<String> list) {
         String[] listStrings = new String[list.size()];
