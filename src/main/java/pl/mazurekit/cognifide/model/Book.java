@@ -142,4 +142,64 @@ public class Book {
     public String[] getCategories() {
         return categories;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public void setPublishedDate(Long publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPageCount(Integer pageCount) {
+        this.pageCount = pageCount;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setPreviewLink(String previewLink) {
+        this.previewLink = previewLink;
+    }
+
+    public void setAverageRating(Double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public void setRatingsCount(Integer ratingsCount) {
+        this.ratingsCount = ratingsCount;
+    }
+
+    public void setAuthors(String[] authors) {
+        this.authors = authors;
+    }
+
+    public void setCategories(String[] categories) {
+        this.categories = categories;
+    }
 }

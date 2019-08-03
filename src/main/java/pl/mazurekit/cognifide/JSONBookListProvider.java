@@ -2,8 +2,6 @@ package pl.mazurekit.cognifide;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import pl.mazurekit.cognifide.model.Book;
 
 import java.io.File;
@@ -22,17 +20,26 @@ public class JSONBookListProvider implements BookListProvider {
 
     @Override
     public List<Book> getAvailableBooks() {
+        ArrayList<Book> books = new ArrayList<>();
 
         ObjectMapper objectMapper = new ObjectMapper();
-
         try {
+
+
             JsonNode jsonNode = objectMapper.readTree(new File(filePath));
-            String items = jsonNode.get(BOOKS_PROVIDER_KEY).asText();
+            JsonNode booksJSON = jsonNode.get(BOOKS_PROVIDER_KEY);
+            Iterator<JsonNode> iterator = booksJSON.iterator();
+            while (iterator.hasNext()){
+                String next = iterator.next().toString();
+                Book book = new ObjectMapper()
+                        .readerFor(Book.class)
+                        .readValue(next);
+                books.add(book);
+            }
 
-            //TODO jak to pobrać ???????????????
-//            List<Book> booksList = objectMapper.readValue(items,new TypeReference<List<Book>>(){});
 
-//            booksList.toString();
+
+            System.out.println("good");
         } catch (Exception e) {
             //TODO make it good
             e.printStackTrace();
@@ -40,17 +47,6 @@ public class JSONBookListProvider implements BookListProvider {
 
         return null;
 
-    }
-
-    private List<JSONObject> getJsonObjectsList(JSONObject jsonObject) {
-        JSONArray jsonBooks = (JSONArray) jsonObject.get(BOOKS_PROVIDER_KEY);
-        List<JSONObject> jsonObjectList = new ArrayList<>();
-        Iterator<JSONObject> jsonObjectIterator = jsonBooks.iterator();
-
-        while (jsonObjectIterator.hasNext()) {
-            jsonObjectList.add(jsonObjectIterator.next());
-        }
-        return jsonObjectList;
     }
 
 
