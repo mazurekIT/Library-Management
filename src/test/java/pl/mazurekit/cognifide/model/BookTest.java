@@ -9,9 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookTest {
 
-
-    private static final String SOURCE_JSON_FILE = "booksTest.json";
-
     private static final String SOURCE_JSON = "{\n" +
             "      \"id\": \"-SYM4PW-YAgC\",\n" +
             "      \"volumeInfo\": {\n" +
@@ -51,7 +48,6 @@ public class BookTest {
 
     @Test
     public void creatBook() throws IOException {
-
 
         Book book = new ObjectMapper()
                 .readerFor(Book.class)

@@ -65,7 +65,7 @@ public class Book {
 
 
     private String[] convertListToArray(List<String> list) {
-        if (list==null){
+        if (list == null) {
             return null;
         }
 
@@ -78,7 +78,7 @@ public class Book {
     }
 
     private String getISBN_13Value(List<LinkedHashMap<String, String>> list) {
-        if (list==null){
+        if (list == null) {
             return null;
         }
 

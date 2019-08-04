@@ -11,7 +11,6 @@ import java.util.List;
 public class JSONBookListProvider implements BookListProvider {
 
     private String filePath;
-    private static final String BOOKS_PROVIDER_KEY = "items";
 
     public JSONBookListProvider(String filePath) {
         this.filePath = filePath;
@@ -27,7 +26,6 @@ public class JSONBookListProvider implements BookListProvider {
             return booksFile.getItems();
 
         } catch (Exception e) {
-            //TODO make it good
             e.printStackTrace();
         }
 

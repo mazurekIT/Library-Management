@@ -16,8 +16,8 @@ public class CognifideApplication {
 
         List<Book> availableBooks = bookListProvider.getAvailableBooks();
 
-        for (Book x:availableBooks){
-            System.out.println(x.getId()+" - "+ x.getIsbn());
+        for (Book x : availableBooks) {
+            System.out.println(x.getId() + " - " + x.getIsbn());
         }
     }
 
