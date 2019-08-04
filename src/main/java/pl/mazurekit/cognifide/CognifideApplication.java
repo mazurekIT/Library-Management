@@ -15,6 +15,10 @@ public class CognifideApplication {
         BookListProvider bookListProvider = new JSONBookListProvider("books.json");
 
         List<Book> availableBooks = bookListProvider.getAvailableBooks();
+
+        for (Book x:availableBooks){
+            System.out.println(x.getId()+" - "+ x.getIsbn());
+        }
     }
 
 }

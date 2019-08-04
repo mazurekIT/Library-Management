@@ -65,6 +65,10 @@ public class Book {
 
 
     private String[] convertListToArray(List<String> list) {
+        if (list==null){
+            return null;
+        }
+
         String[] listStrings = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
             listStrings[i] = String.valueOf(list.get(i));
@@ -74,6 +78,10 @@ public class Book {
     }
 
     private String getISBN_13Value(List<LinkedHashMap<String, String>> list) {
+        if (list==null){
+            return null;
+        }
+
         for (LinkedHashMap<String, String> x : list) {
             if ("ISBN_13".equals(x.get("type"))) {
                 return x.get("identifier");
@@ -82,6 +90,27 @@ public class Book {
         return null;
     }
 
+
+    public Book() {
+    }
+
+    public Book(String id, String isbn, String title, String subtitle, String publisher, Long publishedDate, String description, Integer pageCount, String thumbnailUrl, String language, String previewLink, Double averageRating, Integer ratingsCount, String[] authors, String[] categories) {
+        this.id = id;
+        this.isbn = isbn;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.publisher = publisher;
+        this.publishedDate = publishedDate;
+        this.description = description;
+        this.pageCount = pageCount;
+        this.thumbnailUrl = thumbnailUrl;
+        this.language = language;
+        this.previewLink = previewLink;
+        this.averageRating = averageRating;
+        this.ratingsCount = ratingsCount;
+        this.authors = authors;
+        this.categories = categories;
+    }
 
     public String getId() {
         return id;

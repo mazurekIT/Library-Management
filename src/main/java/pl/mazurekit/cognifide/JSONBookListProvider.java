@@ -1,12 +1,11 @@
 package pl.mazurekit.cognifide;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.mazurekit.cognifide.model.Book;
+import pl.mazurekit.cognifide.model.BooksFile;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class JSONBookListProvider implements BookListProvider {
@@ -24,29 +23,15 @@ public class JSONBookListProvider implements BookListProvider {
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
+            BooksFile booksFile = objectMapper.readValue(new File(filePath), BooksFile.class);
+            return booksFile.getItems();
 
-
-            JsonNode jsonNode = objectMapper.readTree(new File(filePath));
-            JsonNode booksJSON = jsonNode.get(BOOKS_PROVIDER_KEY);
-            Iterator<JsonNode> iterator = booksJSON.iterator();
-            while (iterator.hasNext()){
-                String next = iterator.next().toString();
-                Book book = new ObjectMapper()
-                        .readerFor(Book.class)
-                        .readValue(next);
-                books.add(book);
-            }
-
-
-
-            System.out.println("good");
         } catch (Exception e) {
             //TODO make it good
             e.printStackTrace();
         }
 
         return null;
-
     }
 
 
