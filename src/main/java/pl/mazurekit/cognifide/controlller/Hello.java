@@ -9,7 +9,7 @@ import pl.mazurekit.cognifide.model.Book;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class Hello {
 
     @Autowired
