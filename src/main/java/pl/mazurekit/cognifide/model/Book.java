@@ -1,6 +1,7 @@
 package pl.mazurekit.cognifide.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import pl.mazurekit.cognifide.DateConverter;
 
@@ -8,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
     private String id;
@@ -26,8 +27,8 @@ public class Book {
 
     //need to count average rating of authors
     private Integer ratingsCount;
-    private String[] authors;
-    private String[] categories;
+    private List<String> authors;
+    private List<String> categories;
 
 
     @SuppressWarnings("unchecked")
@@ -55,27 +56,11 @@ public class Book {
         this.previewLink = (String) volumeInfo.get("previewLink");
         this.averageRating = (Double) volumeInfo.get("averageRating");
         this.ratingsCount = (Integer) volumeInfo.get("ratingsCount");
-
-        List<String> authors = (List<String>) volumeInfo.get("authors");
-        this.authors = convertListToArray(authors);
-
-        List<String> categories = (List<String>) volumeInfo.get("categories");
-        this.categories = convertListToArray(categories);
+        this.authors  = (List<String>) volumeInfo.get("authors");
+        this.categories = (List<String>) volumeInfo.get("categories");
     }
 
 
-    private String[] convertListToArray(List<String> list) {
-        if (list == null) {
-            return null;
-        }
-
-        String[] listStrings = new String[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            listStrings[i] = String.valueOf(list.get(i));
-        }
-        return listStrings;
-
-    }
 
     private String getISBN_13Value(List<LinkedHashMap<String, String>> list) {
         if (list == null) {
@@ -87,14 +72,14 @@ public class Book {
                 return x.get("identifier");
             }
         }
-        return null;
+        return this.getId();
     }
 
 
     public Book() {
     }
 
-    public Book(String id, String isbn, String title, String subtitle, String publisher, Long publishedDate, String description, Integer pageCount, String thumbnailUrl, String language, String previewLink, Double averageRating, Integer ratingsCount, String[] authors, String[] categories) {
+    public Book(String id, String isbn, String title, String subtitle, String publisher, Long publishedDate, String description, Integer pageCount, String thumbnailUrl, String language, String previewLink, Double averageRating, Integer ratingsCount, List<String> authors, List<String> categories) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -164,13 +149,6 @@ public class Book {
         return ratingsCount;
     }
 
-    public String[] getAuthors() {
-        return authors;
-    }
-
-    public String[] getCategories() {
-        return categories;
-    }
 
     public void setId(String id) {
         this.id = id;
@@ -224,11 +202,40 @@ public class Book {
         this.ratingsCount = ratingsCount;
     }
 
-    public void setAuthors(String[] authors) {
+    public List<String> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<String> authors) {
         this.authors = authors;
     }
 
-    public void setCategories(String[] categories) {
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
         this.categories = categories;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", subtitle='" + subtitle + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", publishedDate=" + publishedDate +
+                ", description='" + description + '\'' +
+                ", pageCount=" + pageCount +
+                ", thumbnailUrl='" + thumbnailUrl + '\'' +
+                ", language='" + language + '\'' +
+                ", previewLink='" + previewLink + '\'' +
+                ", averageRating=" + averageRating +
+                ", ratingsCount=" + ratingsCount +
+                ", authors=" + authors +
+                ", categories=" + categories +
+                '}';
     }
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,9 +16,7 @@ public class BookTest {
             "      \"volumeInfo\": {\n" +
             "        \"title\": \"The Religion of Java\",\n" +
             "        \"authors\": [\n" +
-            "          \"Clifford Geertz\",\n" +
-            "          \"Mad Bad\",\n" +
-            "          \"Mad Bad\"\n" +
+            "          \"Clifford Geertz\"\n" +
             "        ],\n" +
             "        \"publisher\": \"University of Chicago Press\",\n" +
             "        \"publishedDate\": \"1976-02-15\",\n" +
@@ -66,8 +66,15 @@ public class BookTest {
         assertEquals("http://books.google.pl/books?id=-SYM4PW-YAgC&printsec=frontcover&dq=java&hl=&cd=2&source=gbs_api", book.getPreviewLink());
         assertEquals(new Double(4.0), book.getAverageRating());
         assertEquals(new Integer(4), book.getRatingsCount());
-        assertEquals("Clifford Geertz", book.getAuthors()[0]);
-        assertEquals("Religion", book.getCategories()[0]);
+
+        List<String> authors =new ArrayList<>();
+        authors.add("Clifford Geertz");
+        assertEquals(authors,book.getAuthors());
+
+
+        List<String> categories = new ArrayList<>();
+        categories.add("Religion");
+        assertEquals(categories, book.getCategories());
     }
 
 }
