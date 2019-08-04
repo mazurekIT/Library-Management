@@ -54,6 +54,16 @@ public class BookService {
     }
 
 
+    public List<Book> findBooksOfAuthorAndHavingRating(String author) {
+        List<Book> authorBooks = new ArrayList<>();
+        for (Book book : bookListProvider.getAvailableBooks()) {
+            if (isItBookOfAuthorAndHaveRating(author,book)) {
+                authorBooks.add(book);
+            }
+        }
+        return authorBooks;
+    }
+
     private boolean isBookContainsAnyOfWordsFromQuery(Book book, String query) {
         List<String> words = Arrays.asList(query.split(" "));
         for (String word : words) {
@@ -64,16 +74,6 @@ public class BookService {
         return false;
     }
 
-
-    public List<Book> findBooksOfAuthorAndHavingRating(String author) {
-        List<Book> authorBooks = new ArrayList<>();
-        for (Book book : bookListProvider.getAvailableBooks()) {
-            if (isItBookOfAuthorAndHaveRating(author,book)) {
-                authorBooks.add(book);
-            }
-        }
-        return authorBooks;
-    }
 
     private boolean isItBookOfAuthorAndHaveRating(String author,Book book){
         if(book.getAuthors()!=null){

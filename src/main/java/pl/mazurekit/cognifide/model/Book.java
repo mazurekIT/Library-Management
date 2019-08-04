@@ -63,13 +63,11 @@ public class Book {
 
 
     private String getISBN_13Value(List<LinkedHashMap<String, String>> list) {
-        if (list == null) {
-            return null;
-        }
-
-        for (LinkedHashMap<String, String> x : list) {
-            if ("ISBN_13".equals(x.get("type"))) {
-                return x.get("identifier");
+        if (list != null) {
+            for (LinkedHashMap<String, String> x : list) {
+                if ("ISBN_13".equals(x.get("type"))) {
+                    return x.get("identifier");
+                }
             }
         }
         return this.getId();

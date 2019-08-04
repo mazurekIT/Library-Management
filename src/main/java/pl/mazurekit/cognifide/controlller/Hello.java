@@ -1,7 +1,6 @@
 package pl.mazurekit.cognifide.controlller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.mazurekit.cognifide.BookListProvider;
@@ -22,8 +21,6 @@ public class Hello {
         for (Book x:availableBooks){
             s= s + x.getId() + " - "+ x.getIsbn()+"<br>";
         }
-
-
         return "Hello <br>" + s ;
     }
 }

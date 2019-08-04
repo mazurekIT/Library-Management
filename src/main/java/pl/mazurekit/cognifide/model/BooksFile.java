@@ -19,7 +19,4 @@ public class BooksFile {
         return items;
     }
 
-    public void setItems(List<Book> items) {
-        this.items = items;
-    }
 }

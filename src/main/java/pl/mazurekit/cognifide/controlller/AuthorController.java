@@ -18,7 +18,6 @@ public class AuthorController {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-
     @RequestMapping(value = "/api/rating", method = RequestMethod.GET)
     @ResponseBody
     private String getRatingOfAuthors() throws JsonProcessingException {

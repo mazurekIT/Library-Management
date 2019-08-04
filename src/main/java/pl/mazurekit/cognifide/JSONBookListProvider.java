@@ -15,7 +15,6 @@ public class JSONBookListProvider implements BookListProvider {
 
     private String filePath;
 
-
     public JSONBookListProvider(@Value("${bookFilePath}") String filePath) {
         this.filePath = filePath;
     }
@@ -26,11 +25,9 @@ public class JSONBookListProvider implements BookListProvider {
         try {
             BooksFile booksFile = objectMapper.readValue(new File(filePath), BooksFile.class);
             return booksFile.getItems();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
     }
 

@@ -24,7 +24,6 @@ public class AuthorService {
         HashSet<String> allAuthors = getAllAuthors();
         for (String author : allAuthors) {
             List<Book> booksOfAuthorAndHavingRating = bookService.findBooksOfAuthorAndHavingRating(author);
-
             Double ratingOfAuthor = countRatingOfAuthor(booksOfAuthorAndHavingRating);
             if (!ratingOfAuthor.isNaN()) {
                 authorsRatingList.add(new Author(author, ratingOfAuthor));

@@ -9,7 +9,6 @@ public class CognifideApplication {
     public static void main(String[] args) {
         SpringApplication.run(CognifideApplication.class, args);
 
-
     }
 
 }

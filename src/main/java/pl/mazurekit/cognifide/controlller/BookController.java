@@ -1,6 +1,5 @@
 package pl.mazurekit.cognifide.controlller;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,6 @@ public class BookController {
     @ResponseBody
     private String getBookByISBN(@PathVariable String isbn) throws JsonProcessingException {
         return objectMapper.writeValueAsString(bookService.findBookByISBN(isbn));
-
     }
 
 
