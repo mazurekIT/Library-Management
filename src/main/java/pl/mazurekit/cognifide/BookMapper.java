@@ -16,10 +16,10 @@ public class BookMapper {
     }
 
 
-    public List<BookDto> mapperBooksList(List<Book> booksList){
+    public List<BookDto> mapperBooksList(List<Book> booksList) {
         List<BookDto> booksDto = new ArrayList<>();
-        for(Book book:booksList){
-           booksDto.add(new BookDto(book.getIsbn(), book.getTitle(), book.getSubtitle(), book.getPublisher(), book.getPublishedDate(), book.getDescription(), book.getPageCount(), book.getThumbnailUrl(), book.getLanguage(), book.getPreviewLink(), book.getAverageRating(), book.getAuthors(), book.getCategories()));
+        for (Book book : booksList) {
+            booksDto.add(new BookDto(book.getIsbn(), book.getTitle(), book.getSubtitle(), book.getPublisher(), book.getPublishedDate(), book.getDescription(), book.getPageCount(), book.getThumbnailUrl(), book.getLanguage(), book.getPreviewLink(), book.getAverageRating(), book.getAuthors(), book.getCategories()));
         }
         return booksDto;
     }

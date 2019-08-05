@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class DateConverter { //TODO Check if it works properly
     private String fullDate;
@@ -25,10 +26,23 @@ public class DateConverter { //TODO Check if it works properly
         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             Date parse = dateFormat.parse(this.fullDate);
-            return parse.getTime() / 1000L;
+            return (parse.getTime() / 1000L)+3600;
         } catch (ParseException e) {
             return 0L;
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DateConverter that = (DateConverter) o;
+        return Objects.equals(fullDate, that.fullDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullDate);
     }
 }
