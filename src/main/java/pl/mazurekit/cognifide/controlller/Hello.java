@@ -18,9 +18,9 @@ public class Hello {
     public String hello() {
         List<Book> availableBooks = bookListProvider.getAvailableBooks();
         String s = "";
-        for (Book x:availableBooks){
-            s= s + x.getId() + " - "+ x.getIsbn()+"<br>";
+        for (Book x : availableBooks) {
+            s = s + x.getId() + " - " + x.getIsbn() + "<br>";
         }
-        return "Hello <br>" + s ;
+        return "Hello <br>" + s;
     }
 }

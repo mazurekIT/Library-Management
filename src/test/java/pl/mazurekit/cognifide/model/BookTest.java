@@ -58,7 +58,7 @@ public class BookTest {
         assertEquals("The Religion of Java", book.getTitle());
         assertEquals(null, book.getSubtitle());
         assertEquals("University of Chicago Press", book.getPublisher());
-        assertEquals(new Long(193190400), book.getPublishedDate());
+        assertEquals(new Long(193186800), book.getPublishedDate());
         assertEquals("Written with", book.getDescription());
         assertEquals(new Integer(392), book.getPageCount());
         assertEquals("http://books.google.com/books/content?id=-SYM4PW-YAgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", book.getThumbnailUrl());

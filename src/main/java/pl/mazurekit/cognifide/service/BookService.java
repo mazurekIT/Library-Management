@@ -24,7 +24,7 @@ public class BookService {
                 return book;
             }
         }
-        return null; //TODO 404 for not existing book
+        return null;
     }
 
     public List<Book> findBooksByCategoryName(String category) {
