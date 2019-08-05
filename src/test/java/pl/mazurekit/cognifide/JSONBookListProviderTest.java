@@ -4,23 +4,22 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class JSONBookListProviderTest {
 
     @Test
-    public void shouldGetProperSizeOfBooksList(){
+    public void shouldGetProperSizeOfBooksList() {
         JSONBookListProvider jsonBookListProvider = new JSONBookListProvider(filePath());
         int expectedSizeOfBookList = 4;
-        assertEquals(expectedSizeOfBookList,jsonBookListProvider.getAvailableBooks().size());
+        assertEquals(expectedSizeOfBookList, jsonBookListProvider.getAvailableBooks().size());
     }
-
-
 
     private String filePath() {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("booksTest.json").getFile());
         return file.getAbsolutePath();
     }
+
 
 }

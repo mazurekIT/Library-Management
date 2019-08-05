@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class DateConverter { //TODO Check if it works properly
+public class DateConverter {
     private String fullDate;
 
 

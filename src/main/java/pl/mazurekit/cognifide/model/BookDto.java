@@ -3,6 +3,7 @@ package pl.mazurekit.cognifide.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -89,5 +90,30 @@ public class BookDto {
 
     public List<String> getCategories() {
         return categories;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookDto bookDto = (BookDto) o;
+        return Objects.equals(isbn, bookDto.isbn) &&
+                Objects.equals(title, bookDto.title) &&
+                Objects.equals(subtitle, bookDto.subtitle) &&
+                Objects.equals(publisher, bookDto.publisher) &&
+                Objects.equals(publishedDate, bookDto.publishedDate) &&
+                Objects.equals(description, bookDto.description) &&
+                Objects.equals(pageCount, bookDto.pageCount) &&
+                Objects.equals(thumbnailUrl, bookDto.thumbnailUrl) &&
+                Objects.equals(language, bookDto.language) &&
+                Objects.equals(previewLink, bookDto.previewLink) &&
+                Objects.equals(averageRating, bookDto.averageRating) &&
+                Objects.equals(authors, bookDto.authors) &&
+                Objects.equals(categories, bookDto.categories);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isbn, title, subtitle, publisher, publishedDate, description, pageCount, thumbnailUrl, language, previewLink, averageRating, authors, categories);
     }
 }
