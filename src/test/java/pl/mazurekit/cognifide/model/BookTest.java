@@ -49,6 +49,7 @@ public class BookTest {
     @Test
     public void creatBook() throws IOException {
 
+
         Book book = new ObjectMapper()
                 .readerFor(Book.class)
                 .readValue(SOURCE_JSON);
@@ -67,9 +68,9 @@ public class BookTest {
         assertEquals(new Double(4.0), book.getAverageRating());
         assertEquals(new Integer(4), book.getRatingsCount());
 
-        List<String> authors =new ArrayList<>();
+        List<String> authors = new ArrayList<>();
         authors.add("Clifford Geertz");
-        assertEquals(authors,book.getAuthors());
+        assertEquals(authors, book.getAuthors());
 
 
         List<String> categories = new ArrayList<>();

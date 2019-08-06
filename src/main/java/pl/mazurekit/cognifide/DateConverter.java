@@ -26,7 +26,7 @@ public class DateConverter {
         try {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             Date parse = dateFormat.parse(this.fullDate);
-            return (parse.getTime() / 1000L)+3600;
+            return (parse.getTime() / 1000L) + 3600;
         } catch (ParseException e) {
             return 0L;
         }

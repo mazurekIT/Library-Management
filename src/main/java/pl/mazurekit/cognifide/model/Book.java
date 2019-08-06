@@ -8,6 +8,7 @@ import pl.mazurekit.cognifide.DateConverter;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -56,10 +57,9 @@ public class Book {
         this.previewLink = (String) volumeInfo.get("previewLink");
         this.averageRating = (Double) volumeInfo.get("averageRating");
         this.ratingsCount = (Integer) volumeInfo.get("ratingsCount");
-        this.authors  = (List<String>) volumeInfo.get("authors");
+        this.authors = (List<String>) volumeInfo.get("authors");
         this.categories = (List<String>) volumeInfo.get("categories");
     }
-
 
 
     private String getISBN_13Value(List<LinkedHashMap<String, String>> list) {
@@ -174,5 +174,32 @@ public class Book {
                 ", authors=" + authors +
                 ", categories=" + categories +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(id, book.id) &&
+                Objects.equals(isbn, book.isbn) &&
+                Objects.equals(title, book.title) &&
+                Objects.equals(subtitle, book.subtitle) &&
+                Objects.equals(publisher, book.publisher) &&
+                Objects.equals(publishedDate, book.publishedDate) &&
+                Objects.equals(description, book.description) &&
+                Objects.equals(pageCount, book.pageCount) &&
+                Objects.equals(thumbnailUrl, book.thumbnailUrl) &&
+                Objects.equals(language, book.language) &&
+                Objects.equals(previewLink, book.previewLink) &&
+                Objects.equals(averageRating, book.averageRating) &&
+                Objects.equals(ratingsCount, book.ratingsCount) &&
+                Objects.equals(authors, book.authors) &&
+                Objects.equals(categories, book.categories);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, isbn, title, subtitle, publisher, publishedDate, description, pageCount, thumbnailUrl, language, previewLink, averageRating, ratingsCount, authors, categories);
     }
 }

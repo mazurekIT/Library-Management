@@ -57,7 +57,7 @@ public class BookService {
     public List<Book> findBooksOfAuthorAndHavingRating(String author) {
         List<Book> authorBooks = new ArrayList<>();
         for (Book book : bookListProvider.getAvailableBooks()) {
-            if (isItBookOfAuthorAndHaveRating(author,book)) {
+            if (isItBookOfAuthorAndHaveRating(author, book)) {
                 authorBooks.add(book);
             }
         }
@@ -75,11 +75,11 @@ public class BookService {
     }
 
 
-    private boolean isItBookOfAuthorAndHaveRating(String author,Book book){
-        if(book.getAuthors()!=null){
-            if (book.getAuthors().contains(author)){
-                if (book.getAverageRating()!=null){
-                    if(book.getRatingsCount()!=null){
+    private boolean isItBookOfAuthorAndHaveRating(String author, Book book) {
+        if (book.getAuthors() != null) {
+            if (book.getAuthors().contains(author)) {
+                if (book.getAverageRating() != null) {
+                    if (book.getRatingsCount() != null) {
                         return true;
                     }
                 }

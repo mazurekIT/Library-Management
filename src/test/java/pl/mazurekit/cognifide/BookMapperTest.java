@@ -12,9 +12,37 @@ public class BookMapperTest {
     public void mapperBookShouldWorkProperly() {
         BookMapper bookMapper = new BookMapper();
         ArrayList<String> strings = new ArrayList<>();
-        Book book = new Book("1", "12", "title", "sub", "pub", new Long(1234), "desc", new Integer(123), "th", "pl", "prv", new Double((4.5)), new Integer(5), strings, strings);
-        BookDto bookDto = new BookDto("12", "title", "sub", "pub", new Long(1234), "desc", new Integer(123), "th", "pl", "prv", new Double((4.5)), strings, strings);
-        assert(bookMapper.mapperBook(book).equals(bookDto));
+        Book book = new Book(
+                "1",
+                "12",
+                "title",
+                "sub",
+                "pub",
+                new Long(1234),
+                "desc",
+                new Integer(123),
+                "th",
+                "pl",
+                "prv",
+                new Double((4.5)),
+                new Integer(5),
+                strings,
+                strings);
+        BookDto bookDto = new BookDto(
+                "12",
+                "title",
+                "sub",
+                "pub",
+                new Long(1234),
+                "desc",
+                new Integer(123),
+                "th",
+                "pl",
+                "prv",
+                new Double((4.5)),
+                strings,
+                strings);
+        assert (bookMapper.mapperBook(book).equals(bookDto));
 
     }
 
