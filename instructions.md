@@ -9,7 +9,7 @@ To build the project use following command:
 ### Running
 After building the application run following command to start it:
 
-'java -jar/cognifide-0.0.1-SNAPSHOT.jar'
+'java -jar target/cognifide-0.0.1-SNAPSHOT.jar'
 
 starting port: http://localhost:8080/ 
 
