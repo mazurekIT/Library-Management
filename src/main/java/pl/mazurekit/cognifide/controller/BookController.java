@@ -22,7 +22,7 @@ public class BookController {
     @Autowired
     private BookMapper bookMapper;
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper();
 
 
     @RequestMapping(value = "/api/book/{isbn}", method = RequestMethod.GET)

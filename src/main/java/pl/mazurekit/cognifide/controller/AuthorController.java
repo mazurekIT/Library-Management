@@ -16,7 +16,7 @@ public class AuthorController {
     @Autowired
     private AuthorService authorService;
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @RequestMapping(value = "/api/rating", method = RequestMethod.GET)
     @ResponseBody
